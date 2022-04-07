@@ -31,10 +31,15 @@ class Sensor {
 }
 
 class IotServer {
-    start(sensor) {}
+    start(sensor) {
+        this.sensor = sensor;
+    }
 
     publish(props) {
-        reportingInterval = props.payload;
+        if (this.sensor[0].powerStatus === 'on'){
+            this.sensor[0].reportingInterval = props.payload;
+        }
+        
     }
 }
 
